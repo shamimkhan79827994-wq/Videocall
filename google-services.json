@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "416714991418",
+    "project_id": "video-call-92fec",
+    "storage_bucket": "video-call-92fec.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:416714991418:android:afdb19992e3b3466185203",
+        "android_client_info": {
+          "package_name": "com.shamin.videocall"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiP8zO9Yi8mu08LfBgAs42HRp4z2lfPuM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
