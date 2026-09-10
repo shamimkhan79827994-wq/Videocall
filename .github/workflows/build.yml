@@ -24,16 +24,24 @@ jobs:
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v3
 
-    - name: Build Debug APK
+    - name: Smart Build Android APK
       run: |
+        echo "Searching for project structure..."
+        if [ -f "app/build.gradle" ] || [ -f "app/build.gradle.kts" ]; then
+          echo "Found project inside 'app' directory."
+          cd app
+        else
+          echo "Using root directory structure."
+        fi
+
         if [ -f "gradlew" ]; then
           chmod +x gradlew
           ./gradlew assembleDebug
-        elif [ -f "app/gradlew" ]; then
-          chmod +x app/gradlew
-          cd app && ./gradlew assembleDebug
         else
-          gradle assembleDebug
+          echo "Gradlew not found, generating wrapper..."
+          gradle wrapper
+          chmod +x gradlew
+          ./gradlew assembleDebug
         fi
 
     - name: Upload APK
