@@ -22,8 +22,12 @@ jobs:
     - name: Setup Android SDK
       uses: android-actions/setup-android@v3
 
-    - name: Build Debug APK
+    - name: Auto Fix & Build APK
       run: |
+        if [ ! -f "gradlew" ]; then
+          echo "gradlew not found, initializing gradle wrapper..."
+          gradle wrapper --gradle-version 8.0
+        fi
         chmod +x gradlew
         ./gradlew assembleDebug
 
@@ -31,4 +35,6 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: app-debug
-        path: app/build/outputs/apk/debug/app-debug.apk
+        path: |
+          build/outputs/apk/debug/*.apk
+          app/build/outputs/apk/debug/*.apk
